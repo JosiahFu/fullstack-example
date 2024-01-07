@@ -3,6 +3,14 @@ import { Data1Format } from 'server';
 import StringField from './components/StringField';
 import IntField from './components/IntField';
 
+function postJson(url: string, data: unknown) {
+    return fetch(url, {
+        body: JSON.stringify(data),
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+    });
+}
+
 function App() {
     const [name, setName] = useState('');
     const [age, setAge] = useState(0);
@@ -10,11 +18,7 @@ function App() {
     const handleSubmit = async () => {
         const data: Data1Format = { name, age };
 
-        fetch('/data1', {
-            body: JSON.stringify(data),
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-        });
+        postJson('/data1', data);
     };
 
     return (
