@@ -3,6 +3,7 @@ import { Data1Format } from 'server';
 import StringField from './components/StringField';
 import IntField from './components/IntField';
 
+// Reusable function to send JSON to a url
 function postJson(url: string, data: unknown) {
     return fetch(url, {
         body: JSON.stringify(data),
@@ -18,7 +19,13 @@ function App() {
     const handleSubmit = async () => {
         const data: Data1Format = { name, age };
 
-        postJson('/data1', data);
+        try {
+            const result = await postJson('/data1', data);
+            if (!result.ok) throw new Error();
+            alert('Data submitted');
+        } catch (e) {
+            alert(`Error occurred!\n${e}`);
+        }
     };
 
     return (
