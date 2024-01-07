@@ -13,5 +13,5 @@ app.post('/data1', (req, res) => {
 app.use(express.static('static'))
 
 const server = app.listen(3000, () => {
-    console.log('Server started');
+    console.log('Server started at http://localhost:3000');
 });
