@@ -1,16 +1,12 @@
 {
   "name": "fullstack-example",
   "version": "1.0.0",
-  "description": "",
   "scripts": {
     "prebuild": "test -d server/static && rm -rf server/static",
     "build": "npm run build --workspaces",
     "postbuild": "shx cp -r client/dist server/static",
     "start": "npm run start --workspace server"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "workspaces": [
     "server",
     "client"
